@@ -17,8 +17,8 @@ public class Polizza {
     private long id;
     private String nome;
     @ManyToOne
-    @JoinColumn(name = "tipologia_id")
-    private TipologiaPolizza tipologia;
+    @JoinColumn(name = "settore_id")
+    private SettorePolizza settore;
     private Date scadenza;
     private double costo;
     @ManyToOne
@@ -40,11 +40,12 @@ public class Polizza {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public TipologiaPolizza getTipologia() {
-		return tipologia;
+	
+	public SettorePolizza getSettore() {
+		return settore;
 	}
-	public void setTipologia(TipologiaPolizza tipologia) {
-		this.tipologia = tipologia;
+	public void setSettore(SettorePolizza settore) {
+		this.settore = settore;
 	}
 	public Date getScadenza() {
 		return scadenza;

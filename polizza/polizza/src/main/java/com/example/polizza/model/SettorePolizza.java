@@ -1,5 +1,9 @@
 package com.example.polizza.model;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class SettorePolizza {
@@ -20,6 +25,10 @@ public class SettorePolizza {
 	@ManyToOne
 	@JoinColumn(name = "tipologia_id")
 	private TipologiaPolizza tipologia;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "settore")
+	private List<Polizza> polizza;
 	
 	public SettorePolizza() {
 		super();
@@ -56,8 +65,14 @@ public class SettorePolizza {
 	public void setTipologia(TipologiaPolizza tipologia) {
 		this.tipologia = tipologia;
 	}
-	
-	
+
+	public List<Polizza> getPolizza() {
+		return polizza;
+	}
+
+	public void setPolizza(List<Polizza> polizza) {
+		this.polizza = polizza;
+	}
 	
 	
 }
